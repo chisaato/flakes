@@ -86,7 +86,7 @@
     kubevela
     yaml-language-server
     openapi-generator-cli
-
+    skaffold
 
     # 打包辅助工具
     nixpkgs-vet
