@@ -87,6 +87,8 @@
     yaml-language-server
     openapi-generator-cli
     skaffold
+    telepresence2
+
 
     # 打包辅助工具
     nixpkgs-vet
