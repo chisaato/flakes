@@ -89,7 +89,6 @@
     skaffold
     telepresence2
 
-
     # 打包辅助工具
     nixpkgs-vet
     nixpkgs-fmt
@@ -147,5 +146,7 @@
   # 其他集成
   # programs.bash.enable = true;
   # programs.zsh.enable = true;
+  # 不要来控制系统服务
+  systemd.user.startServices = false;
 
 }
