@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  misakacloud-flake,
   ...
 }:
 
@@ -99,6 +98,8 @@
     feishu
     sourcegit
     # 自己打包的
+    # garden-bin
+    dbeaver-ue
 
   ];
 

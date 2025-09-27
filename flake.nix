@@ -8,10 +8,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils.url = "github:numtide/flake-utils";
+
     # 添加你的自定义 flake
-    misakacloud-flake = {
-      url = "github:chisaato/nur";
-      inputs.nixpkgs.follows = "nixpkgs";
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
     };
   };
 
@@ -19,35 +21,47 @@
     {
       nixpkgs,
       home-manager,
-      misakacloud-flake,
+      flake-utils,
+      self,
       ...
-    }:
+    }@inputs:
     let
+      inherit (nixpkgs) lib;
+      inherit (flake-utils.lib) eachDefaultSystem mkApp;
+      systems = flake-utils.lib.system;
+      myPkgs = import ./packages;
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true; # 允许非自由软件
-          permittedInsecurePackages = [
-            "python3.13-apache-airflow-2.7.3"
-          ];
 
-        };
-        # overlays = [
-        #   misakacloud-flake.overlays.default
-        # ];
-      };
     in
-    {
-      homeConfigurations."gzzchh" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        # pkgs = nixpkgs.legacyPackages.x86_64-linux;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        # extraSpecialArgs = {
-        #   inherit misakacloud-flake;
+    eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        # platformPackages = myPkgs.packages {
+        #   inherit pkgs inputs;
+        #   filterByPlatform = true;
         # };
+      in
+      rec {
+        # packages = platformPackages;
+        # checks = platformPackages;
+      }
+    )
+    // {
+      overlays = myPkgs.overlays;
+      nixosModules = import ./modules;
+      homeConfigurations."gzzchh" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [
+            self.overlays.default
+          ];
+        };
+
         modules = [ ./home.nix ];
       };
     };
