@@ -45,7 +45,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   agentSrc = fetchurl {
     url = finalAttrs.agentUrl;
-    sha256 = "sha256-/t3lLKCJceF6YCWn9XrboXCdX8VNMgAiDa0XpA0F1a0=";
+    sha256 = "sha256-/5Z9tmkqT+dsfnMXhHnvIO3Bq2LnPCdXXNtBqeqP54A=";
   };
 
   sourceRoot = lib.optional stdenvNoCC.hostPlatform.isDarwin "DBeaver.app";
@@ -101,7 +101,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
         # 拷贝 agent
         cp $agentSrc $out/opt/dbeaver-ue/dbeaver-agent.jar
         # 写参数
-        echo "-javaagent:dbeaver-agent.jar" >> $out/opt/dbeaver-ue/dbeaver.ini
+        echo "-javaagent:$out/opt/dbeaver-ue/dbeaver-agent.jar" >> $out/opt/dbeaver-ue/dbeaver.ini
 
         makeWrapper $out/opt/dbeaver-ue/dbeaver $out/bin/dbeaver \
           --prefix PATH : "${openjdk21}/bin" \
