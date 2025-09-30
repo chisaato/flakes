@@ -99,7 +99,8 @@
     sourcegit
     # 自己打包的
     # garden-bin
-    dbeaver-ue
+    dbeaver-ue-bin
+    chart-releaser
 
   ];
 
