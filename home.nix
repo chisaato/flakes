@@ -87,6 +87,7 @@
     openapi-generator-cli
     skaffold
     telepresence2
+    chart-testing
 
     # 打包辅助工具
     nixpkgs-vet
@@ -100,6 +101,7 @@
     # 自己打包的
     # garden-bin
     dbeaver-ue-bin
+    dbeaver-te-bin
     chart-releaser
 
   ];

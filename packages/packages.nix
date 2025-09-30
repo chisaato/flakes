@@ -17,6 +17,7 @@ let
   self_base = {
     garden-bin = callPackage ./garden-bin { };
     dbeaver-ue-bin = callPackage ./dbeaver-ue-bin { inherit (pkgs) autoSignDarwinBinariesHook; };
+    dbeaver-te-bin = callPackage ./dbeaver-te-bin { inherit (pkgs) autoSignDarwinBinariesHook; };
     chart-releaser = callPackage ./chart-releaser { };
   };
 

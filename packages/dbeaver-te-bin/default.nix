@@ -17,7 +17,7 @@
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
-  pname = "dbeaver-ue-bin";
+  pname = "dbeaver-te-bin";
   version = "25.2.0";
   agentUrl = "https://storage-common.misakacloud.dev/assets/dbeaver-agent.jar";
 
@@ -32,14 +32,14 @@ stdenvNoCC.mkDerivation (finalAttrs: {
         # aarch64-darwin = "macos-aarch64.dmg";
       };
       hash = selectSystem {
-        x86_64-linux = "sha256-qzFOyHay5t3GAyd5YwdlpQ3hsQbceYig40NSiQPQpMo=";
+        x86_64-linux = "sha256-axuyic/KyyToTxTGjZEZ3j48Sp6ohVJxQ1v6HvA9OpE=";
         # aarch64-linux = "sha256-+byvDpqaijxt0LnGJuWg1ooVnb1bLdaFfvEmlaEmBCA=";
         # x86_64-darwin = "sha256-59mrDs00XxIjfiqm3OsoHqbuNQI3VdB1ff3l/51lzEg=";
         # aarch64-darwin = "sha256-jUWZr5DwUv6aFfGEox62r+PRoEqZIvdP6YHCsWshYJA=";
       };
     in
     fetchurl {
-      url = "https://dbeaver.com/files/${finalAttrs.version}/dbeaver-ue-${finalAttrs.version}-${suffix}";
+      url = "https://dbeaver.com/files/${finalAttrs.version}/dbeaver-te-${finalAttrs.version}-${suffix}";
       inherit hash;
     };
 
@@ -96,14 +96,14 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
 
 
-        mkdir -p $out/opt/dbeaver-ue $out/bin
-        cp -r * $out/opt/dbeaver-ue
+        mkdir -p $out/opt/dbeaver-te $out/bin
+        cp -r * $out/opt/dbeaver-te
         # 拷贝 agent
-        cp $agentSrc $out/opt/dbeaver-ue/dbeaver-agent.jar
+        cp $agentSrc $out/opt/dbeaver-te/dbeaver-agent.jar
         # 写参数
-        echo "-javaagent:$out/opt/dbeaver-ue/dbeaver-agent.jar" >> $out/opt/dbeaver-ue/dbeaver.ini
+        echo "-javaagent:$out/opt/dbeaver-te/dbeaver-agent.jar" >> $out/opt/dbeaver-te/dbeaver.ini
 
-        makeWrapper $out/opt/dbeaver-ue/dbeaver $out/bin/dbeaver-ue \
+        makeWrapper $out/opt/dbeaver-te/dbeaver $out/bin/dbeaver-te \
           --prefix PATH : "${openjdk21}/bin" \
           --set JAVA_HOME "${openjdk21.home}" \
           --prefix GIO_EXTRA_MODULES : "${glib-networking}/lib/gio/modules" \
@@ -117,16 +117,16 @@ stdenvNoCC.mkDerivation (finalAttrs: {
           }"
 
         mkdir -p $out/share/icons/hicolor/256x256/apps
-        ln -s $out/opt/dbeaver-ue/dbeaver.png $out/share/icons/hicolor/256x256/apps/dbeaver-ue.png
+        ln -s $out/opt/dbeaver-te/dbeaver.png $out/share/icons/hicolor/256x256/apps/dbeaver-te.png
 
         mkdir -p $out/share/applications
-        ln -s $out/opt/dbeaver-ue/dbeaver-ue.desktop $out/share/applications/dbeaver-ue.desktop
+        ln -s $out/opt/dbeaver-te/dbeaver-te.desktop $out/share/applications/dbeaver-te.desktop
 
-        substituteInPlace $out/opt/dbeaver-ue/dbeaver-ue.desktop \
-          --replace-fail "/usr/share/dbeaver-ue/dbeaver.png" "dbeaver-ue" \
-          --replace-fail "/usr/share/dbeaver-ue/dbeaver" "$out/bin/dbeaver"
+        substituteInPlace $out/opt/dbeaver-te/dbeaver-te.desktop \
+          --replace-fail "/usr/share/dbeaver-te/dbeaver.png" "dbeaver-te" \
+          --replace-fail "/usr/share/dbeaver-te/dbeaver" "$out/bin/dbeaver"
 
-        sed -i '/^Path=/d' $out/share/applications/dbeaver-ue.desktop
+        sed -i '/^Path=/d' $out/share/applications/dbeaver-te.desktop
 
         runHook postInstall
       ''
@@ -164,6 +164,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       mkg20001
       yzx9
     ];
-    mainProgram = "dbeaver-ue";
+    mainProgram = "dbeaver-te";
   };
 })
