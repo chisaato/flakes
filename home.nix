@@ -88,6 +88,8 @@
     skaffold
     telepresence2
     chart-testing
+    openbao
+    step-ca
 
     # 打包辅助工具
     nixpkgs-vet
@@ -98,6 +100,8 @@
     # 图形化应用
     feishu
     sourcegit
+    avalonia-ilspy
+
     # 自己打包的
     # garden-bin
     dbeaver-ue-bin
