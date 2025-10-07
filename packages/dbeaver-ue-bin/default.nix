@@ -124,7 +124,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
         substituteInPlace $out/opt/dbeaver-ue/dbeaver-ue.desktop \
           --replace-fail "/usr/share/dbeaver-ue/dbeaver.png" "dbeaver-ue" \
-          --replace-fail "/usr/share/dbeaver-ue/dbeaver" "$out/bin/dbeaver"
+          --replace-fail "/usr/share/dbeaver-ue/dbeaver" "$out/bin/dbeaver-ue"
 
         sed -i '/^Path=/d' $out/share/applications/dbeaver-ue.desktop
 

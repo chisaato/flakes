@@ -70,7 +70,6 @@
     velero
     wgcf
     wireproxy
-    wrangler
     yarn-berry
     yq-go
     ruby
@@ -90,6 +89,7 @@
     chart-testing
     openbao
     step-ca
+    tokei
 
     # 打包辅助工具
     nixpkgs-vet
