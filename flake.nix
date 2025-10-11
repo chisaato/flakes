@@ -52,7 +52,7 @@
     )
     // {
       overlays = myPkgs.overlays;
-      nixosModules = import ./modules;
+      # nixosModules = import ./modules;
       homeConfigurations."gzzchh" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           inherit system;
