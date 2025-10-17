@@ -90,6 +90,8 @@
     openbao
     step-ca
     tokei
+    act
+    renderdoc
 
     # 打包辅助工具
     nixpkgs-vet
