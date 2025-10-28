@@ -1,6 +1,7 @@
 rec {
   # 导入所有 overlay 目录
   sourcegit = import ./sourcegit;
+  cosign = import ./cosign;
 
   # 这里可以添加更多 overlays，例如：
   # myoverlay = import ./myoverlay;
@@ -10,6 +11,7 @@ rec {
     let
       overlays = [
         sourcegit
+        cosign
         # 添加更多 overlays 到这个列表，例如：
         # myoverlay
       ];
