@@ -38,7 +38,7 @@
     gemini-cli
     gh
     go
-    go-musicfox
+
     golangci-lint
     golangci-lint-langserver
     helm-ls
