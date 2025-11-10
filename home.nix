@@ -38,6 +38,7 @@
     gemini-cli
     gh
     go
+    dive
 
     golangci-lint
     golangci-lint-langserver
@@ -49,7 +50,6 @@
     kubectl
     kubernetes-helm
     kyverno-chainsaw
-    libyaml
     minikube
     nix
     nixfmt
