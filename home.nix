@@ -39,6 +39,7 @@
     gh
     go
     dive
+    pack
 
     golangci-lint
     golangci-lint-langserver
