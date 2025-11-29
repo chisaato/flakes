@@ -40,6 +40,8 @@
     go
     dive
     pack
+    apktool
+    apksigner
 
     golangci-lint
     golangci-lint-langserver
@@ -71,6 +73,7 @@
     velero
     wgcf
     wireproxy
+    usque
     yarn-berry
     yq-go
     ruby
