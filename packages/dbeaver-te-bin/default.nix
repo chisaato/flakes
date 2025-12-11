@@ -18,7 +18,7 @@
 
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "dbeaver-te-bin";
-  version = "25.2.0";
+  version = "25.3.0";
   agentUrl = "https://storage-common.misakacloud.dev/assets/dbeaver-agent.jar";
 
   src =
@@ -32,14 +32,14 @@ stdenvNoCC.mkDerivation (finalAttrs: {
         # aarch64-darwin = "macos-aarch64.dmg";
       };
       hash = selectSystem {
-        x86_64-linux = "sha256-axuyic/KyyToTxTGjZEZ3j48Sp6ohVJxQ1v6HvA9OpE=";
+        x86_64-linux = "sha256-q2a7cH7vqLGVwNzYf5Ro16D4wpD8QVt1xBfJHb0Ewxc=";
         # aarch64-linux = "sha256-+byvDpqaijxt0LnGJuWg1ooVnb1bLdaFfvEmlaEmBCA=";
         # x86_64-darwin = "sha256-59mrDs00XxIjfiqm3OsoHqbuNQI3VdB1ff3l/51lzEg=";
         # aarch64-darwin = "sha256-jUWZr5DwUv6aFfGEox62r+PRoEqZIvdP6YHCsWshYJA=";
       };
     in
     fetchurl {
-      url = "https://dbeaver.com/files/${finalAttrs.version}/dbeaver-te-${finalAttrs.version}-${suffix}";
+      url = "https://c.scgit.top/dbeaver.com/files/${finalAttrs.version}/dbeaver-te-${finalAttrs.version}-${suffix}";
       inherit hash;
     };
 
