@@ -52,7 +52,7 @@
     ko
     kubectl
     kubernetes-helm
-    kyverno-chainsaw
+    # kyverno-chainsaw
     minikube
     nix
     nixfmt
