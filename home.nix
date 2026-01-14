@@ -59,6 +59,7 @@
     nodejs
     openbao
     opentofu
+    bento4
     operator-sdk
     payload-dumper-go
     pixi
@@ -96,6 +97,7 @@
     tokei
     act
     fnm
+    opencode
 
     # renderdoc
 
