@@ -97,6 +97,7 @@
     tokei
     act
     fnm
+    xwin
     opencode
 
     # renderdoc
