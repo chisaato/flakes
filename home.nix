@@ -35,7 +35,7 @@
     dotnet-sdk_9
     etcd
     gdu
-    gemini-cli
+    # gemini-cli
     gh
     go
     dive
@@ -98,7 +98,7 @@
     act
     fnm
     xwin
-    opencode
+    # opencode
 
     # renderdoc
 
