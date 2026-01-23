@@ -99,6 +99,8 @@
     fnm
     xwin
     # opencode
+    just
+    just-lsp
 
     # renderdoc
 
