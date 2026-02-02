@@ -32,7 +32,7 @@
     crc
     ddev
     direnv
-    dotnet-sdk_9
+    # dotnet-sdk_9
     etcd
     gdu
     # gemini-cli
@@ -156,7 +156,7 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
-    DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet/";
+    # DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet/";
     TEST_ENV_DEBUG = "true";
   };
 
