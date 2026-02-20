@@ -21,109 +21,29 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = with pkgs; [
-    argocd
-    buildkit
-    bun
-    chart-testing
-    chezmoi
-    cilium-cli
-    cosign
-    crc
-    ddev
-    direnv
-    # dotnet-sdk_9
-    etcd
-    gdu
-    # gemini-cli
-    gh
-    go
-    dive
-    pack
-    apktool
-    apksigner
-
-    golangci-lint
-    golangci-lint-langserver
-    helm-ls
-    hubble
-    istioctl
-    kind
-    ko
-    kubectl
-    kubernetes-helm
-    # kyverno-chainsaw
-    minikube
-    nix
-    nixfmt
-    nodejs
-    openbao
-    opentofu
-    bento4
-    operator-sdk
-    payload-dumper-go
-    pixi
-    pnpm
-    q
-    rclone
-    skopeo
-    step-ca
-    step-cli
-    terragrunt
-    uv
-    velero
-    wgcf
-    wireproxy
-    usque
-    yarn-berry
-    yq-go
-    ruby
-    devbox
-    age
-    age-plugin-yubikey
-    kn
-    func
-    sops
-    caddy
-    niv
-    kubevela
-    yaml-language-server
-    openapi-generator-cli
-    skaffold
-    telepresence2
-    chart-testing
-    openbao
-    step-ca
-    tokei
-    act
-    fnm
-    xwin
-    # opencode
-    just
-    just-lsp
-
-    # renderdoc
-
-    # 打包辅助工具
-    nixpkgs-vet
-    nixpkgs-fmt
-    nixpkgs-lint
-    nix-update
-
-    # 图形化应用
-    feishu
-    sourcegit
-    # avalonia-ilspy
-
-    # 自己打包的
-    # garden-bin
-    dbeaver-ue-bin
-    dbeaver-te-bin
-    chart-releaser
-
+  # 导入模块
+  imports = [
+    ./modules/nix-tools.nix
+    ./modules/misc.nix
+    ./modules/kubernetes.nix
+    ./modules/golang.nix
+    ./modules/nodejs.nix
+    ./modules/cloud-native.nix
+    ./modules/container.nix
+    ./modules/desktop.nix
   ];
+
+  # 模块开关配置
+  # 默认启用的模块：nix-tools, misc
+  # 按需启用的模块：kubernetes, golang, nodejs, cloud-native, container, desktop
+  my = {
+    kubernetes.enable = true;
+    golang.enable = true;
+    nodejs.enable = true;
+    cloud-native.enable = true;
+    container.enable = true;
+    desktop.enable = true;
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -159,7 +79,7 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
     # DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet/";
-    TEST_ENV_DEBUG = "true";
+    # TEST_ENV_DEBUG = "true";
   };
 
   # Let Home Manager install and manage itself.
