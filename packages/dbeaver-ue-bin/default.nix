@@ -18,7 +18,7 @@
 
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "dbeaver-ue-bin";
-  version = "25.3.0";
+  version = "26.0.0";
   agentUrl = "https://storage-common.misakacloud.dev/assets/dbeaver-agent.jar";
 
   src =
@@ -26,20 +26,20 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       inherit (stdenvNoCC.hostPlatform) system;
       selectSystem = attrs: attrs.${system} or (throw "Unsupported system: ${system}");
       suffix = selectSystem {
-        x86_64-linux = "linux.gtk.x86_64-nojdk.tar.gz";
-        # aarch64-linux = "linux.gtk.aarch64-nojdk.tar.gz";
+        x86_64-linux = "linux-x86_64.tar.gz";
+        # aarch64-linux = "linux-aarch64.tar.gz";
         # x86_64-darwin = "macos-x86_64.dmg";
         # aarch64-darwin = "macos-aarch64.dmg";
       };
       hash = selectSystem {
-        x86_64-linux = "sha256-2/fDZeqesX9UMdNfLN5oo5kl6IO5zz2eDfTRzZqMnSI=";
+        x86_64-linux = "sha256-fjBAgL9q2eTfGf0BBp5dtFgvq6q+cmfPPbTG9VZmne0=";
         # aarch64-linux = "sha256-+byvDpqaijxt0LnGJuWg1ooVnb1bLdaFfvEmlaEmBCA=";
         # x86_64-darwin = "sha256-59mrDs00XxIjfiqm3OsoHqbuNQI3VdB1ff3l/51lzEg=";
         # aarch64-darwin = "sha256-jUWZr5DwUv6aFfGEox62r+PRoEqZIvdP6YHCsWshYJA=";
       };
     in
     fetchurl {
-      url = "https://c.scgit.top/dbeaver.com/files/${finalAttrs.version}/dbeaver-ue-${finalAttrs.version}-${suffix}";
+      url = "https://c.scgit.top/downloads.dbeaver.net/ultimate/${finalAttrs.version}/dbeaver-ue-${finalAttrs.version}-${suffix}";
       inherit hash;
     };
 
@@ -83,10 +83,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     pushd ${lib.optionalString stdenvNoCC.hostPlatform.isDarwin "Contents/Eclipse/"}plugins/com.sun.jna_*/com/sun/jna/
     rm -r !(ptr|internal|linux-x86-64|linux-aarch64|darwin-x86-64|darwin-aarch64)/
     popd
-  ''
-  # remove the bundled JRE on Darwin
-  + lib.optionalString stdenvNoCC.hostPlatform.isDarwin ''
-    rm -r Contents/Eclipse/jre/
+
+    # remove the bundled JRE
+    rm -rf ${lib.optionalString stdenvNoCC.hostPlatform.isDarwin "Contents/Eclipse/"}jre/
   '';
 
   installPhase =
