@@ -31,7 +31,7 @@
       # 网络工具
       wgcf
       wireproxy
-      usque
+      # usque
       # 其他
       bento4
       apktool
