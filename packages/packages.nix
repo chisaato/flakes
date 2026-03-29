@@ -19,6 +19,7 @@ let
     dbeaver-ue-bin = callPackage ./dbeaver-ue-bin { inherit (pkgs) autoSignDarwinBinariesHook; };
     dbeaver-te-bin = callPackage ./dbeaver-te-bin { inherit (pkgs) autoSignDarwinBinariesHook; };
     chart-releaser = callPackage ./chart-releaser { };
+    acloud-toolkit-bin = callPackage ./acloud-toolkit-bin { };
   };
 
 in

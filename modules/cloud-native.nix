@@ -21,6 +21,7 @@
       sops
       age
       age-plugin-yubikey
+      acloud-toolkit-bin
       # 存储/同步
       rclone
       caddy
