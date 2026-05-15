@@ -40,6 +40,10 @@
       xwin
       yaml-language-server
       openapi-generator-cli
+      # 数据库
+      postgresql
+      mariadb
+      mongosh
     ];
   };
 }
