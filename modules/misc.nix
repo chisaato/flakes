@@ -44,6 +44,10 @@
       postgresql
       mariadb
       mongosh
+      cloudflared
+      # scrcpy
+      # scrcpy
+      qtscrcpy
     ];
   };
 }

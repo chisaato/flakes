@@ -13,6 +13,7 @@
   config = lib.mkIf config.my.nix-tools.enable {
     home.packages = with pkgs; [
       nix
+      nixd
       nixfmt
       nixpkgs-vet
       nixpkgs-fmt
