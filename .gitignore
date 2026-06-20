@@ -1,2 +1,3 @@
 *.tar.gz
 result
+.omo/run-continuation
