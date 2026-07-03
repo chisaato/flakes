@@ -26,6 +26,7 @@
       rclone
       caddy
       skopeo
+      packer
     ];
   };
 }

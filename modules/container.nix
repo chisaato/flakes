@@ -13,6 +13,7 @@
       buildkit
       dive
       pack
+      docker-credential-helpers
     ];
   };
 }
