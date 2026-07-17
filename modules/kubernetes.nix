@@ -5,6 +5,15 @@
   ...
 }:
 
+let
+  # 独立安装 kubectl，因此移除 minikube 提供的同名快捷链接，
+  # 避免 Home Manager 合并 profile 时发生路径冲突。
+  minikubeWithoutKubectl = pkgs.minikube.overrideAttrs (oldAttrs: {
+    postInstall = (oldAttrs.postInstall or "") + ''
+      rm -f "$out/bin/kubectl"
+    '';
+  });
+in
 {
   options.my.kubernetes.enable = lib.mkEnableOption "Kubernetes tools";
 
@@ -13,7 +22,7 @@
       kubectl
       kubernetes-helm
       kind
-      minikube
+      minikubeWithoutKubectl
       argocd
       velero
       istioctl

@@ -48,6 +48,10 @@
       # scrcpy
       # scrcpy
       qtscrcpy
+      usque
+      # 谷歌 AntiGravity
+      antigravity
+      antigravity-cli
     ];
   };
 }
