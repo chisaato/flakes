@@ -10,11 +10,11 @@
 
   config = lib.mkIf config.my.nodejs.enable {
     home.packages = with pkgs; [
-      nodejs
-      node-gyp
-      pnpm
-      yarn-berry
-      bun
+      # nodejs
+      # node-gyp
+      # pnpm
+      # yarn-berry
+      # bun
       fnm
     ];
   };
