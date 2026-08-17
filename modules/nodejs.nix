@@ -14,7 +14,7 @@
       # node-gyp
       # pnpm
       # yarn-berry
-      # bun
+      bun
       fnm
     ];
   };
