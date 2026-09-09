@@ -50,8 +50,8 @@
       qtscrcpy
       usque
       # 谷歌 AntiGravity
-      antigravity-ide
-      antigravity-cli
+      # antigravity-ide
+      # antigravity-cli
       # 
       codegraph
     ];
