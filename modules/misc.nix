@@ -54,6 +54,8 @@
       # antigravity-cli
       # 
       codegraph
+      # 中文自动 Pangu
+      autocorrect
     ];
   };
 }
