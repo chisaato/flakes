@@ -12,7 +12,10 @@
 
   config = lib.mkIf config.my.misc.enable {
     home.packages = with pkgs; [
+      # GitHub CLI
       gh
+      # GitLab CLI
+      glab
       act
       just
       just-lsp
@@ -56,6 +59,7 @@
       codegraph
       # 中文自动 Pangu
       autocorrect
+      
     ];
   };
 }
