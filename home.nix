@@ -3,6 +3,7 @@
   pkgs,
   username,
   homeDirectory,
+  machineConfig ? { },
   ...
 }:
 
@@ -34,16 +35,27 @@
   ];
 
   # 模块开关配置
-  # 默认启用的模块：nix-tools, misc
-  # 按需启用的模块：kubernetes, golang, nodejs, cloud-native, container, desktop
-  my = {
-    kubernetes.enable = true;
-    golang.enable = true;
-    nodejs.enable = true;
-    cloud-native.enable = true;
-    container.enable = true;
-    desktop.enable = true;
-  };
+  # 默认启用的模块:nix-tools, misc
+  # 按需启用的模块:kubernetes, golang, nodejs, cloud-native, container, desktop
+  # 开关由本机文件 machine.local.nix(不入 git)覆盖;文件不存在或未写到的模块
+  # 使用 defaultModules(全家桶)。注意 desktop 模块自身默认是 false,
+  # 因此这里的默认表是唯一事实来源,不要依赖各模块内部的默认值。
+  my =
+    let
+      defaultModules = {
+        nix-tools = true;
+        misc = true;
+        kubernetes = true;
+        golang = true;
+        nodejs = true;
+        cloud-native = true;
+        container = true;
+        desktop = true;
+      };
+    in
+    builtins.mapAttrs (_name: enable: { inherit enable; }) (
+      defaultModules // (machineConfig.modules or { })
+    );
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

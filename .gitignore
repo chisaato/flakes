@@ -1,3 +1,4 @@
 *.tar.gz
 result
 .omo/run-continuation
+machine.local.nix
